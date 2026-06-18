@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>NYORAA — House of Brands</title>
+  <meta name="description" content="Six iconic brands. One vision. Crafting transformative personal care rooted in pure ingredients and breakthrough science." />
+  
+  <link rel="stylesheet" href="/app/globals.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            raleway: ['Raleway', 'sans-serif'],
+          },
+          colors: {
+            linen: {
+              50:  '#fdfcfa',
+              100: '#f8f6f2',
+              200: '#f3f0eb',
+              300: '#e8e4de',
+              400: '#d5cfc6',
+              500: '#c0bab1',
+              600: '#9a958e',
+              700: '#6a6560',
+              800: '#3a3630',
+              900: '#1a1814',
+            },
+          },
+          screens: {
+            'xs': '375px',
+            '3xl': '1920px',
+            '4xl': '2560px',
+          },
+        },
+      },
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <style>
+    /* CSS Translations for Framer Motion */
+    @keyframes heartBg {
+      0% { transform: scale(1) perspective(400px) rotateY(0deg) rotateX(0deg); }
+      50% { transform: scale(1.05) perspective(400px) rotateY(15deg) rotateX(-15deg); }
+      100% { transform: scale(1) perspective(400px) rotateY(0deg) rotateX(0deg); }
+    }
+    @keyframes heartIcon {
+      0% { transform: translateZ(0px); }
+      50% { transform: translateZ(20px); }
+      100% { transform: translateZ(0px); }
+    }
+    @keyframes penBg {
+      0% { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(0.95); }
+      100% { transform: rotate(360deg) scale(1); }
+    }
+    @keyframes penIcon {
+      0% { transform: perspective(400px) rotateY(0deg) translateX(0px); }
+      50% { transform: perspective(400px) rotateY(30deg) translateX(2px); }
+      100% { transform: perspective(400px) rotateY(0deg) translateX(0px); }
+    }
+    @keyframes trendBg {
+      0% { transform: skewX(0deg) translateY(0px); }
+      50% { transform: skewX(5deg) translateY(-4px); }
+      100% { transform: skewX(0deg) translateY(0px); }
+    }
+    @keyframes trendIcon {
+      0% { transform: perspective(400px) rotateX(0deg); }
+      50% { transform: perspective(400px) rotateX(45deg); }
+      100% { transform: perspective(400px) rotateX(0deg); }
+    }
+    @keyframes bookBg {
+      0% { transform: scale(1) rotateZ(0deg); }
+      50% { transform: scale(1.1) rotateZ(10deg); }
+      100% { transform: scale(1) rotateZ(0deg); }
+    }
+    @keyframes bookIcon {
+      0% { transform: perspective(400px) rotateY(0deg) scale(1); }
+      50% { transform: perspective(400px) rotateY(-30deg) scale(1.2); }
+      100% { transform: perspective(400px) rotateY(0deg) scale(1); }
+    }
+
+    .anim-heart-bg { animation: heartBg 4s ease-in-out infinite; }
+    .anim-heart-icon { animation: heartIcon 3s ease-in-out infinite; }
+    .anim-pen-bg { animation: penBg 10s linear infinite; }
+    .anim-pen-icon { animation: penIcon 2.5s ease-in-out infinite; }
+    .anim-trend-bg { animation: trendBg 5s ease-in-out infinite; }
+    .anim-trend-icon { animation: trendIcon 4s ease-in-out infinite; }
+    .anim-book-bg { animation: bookBg 6s ease-in-out infinite; }
+    .anim-book-icon { animation: bookIcon 3.5s ease-in-out infinite; }
+  </style>
+</head>
+<body>
+  <main id="container">
+    <div class="cur" id="cursor"></div>
+    <div class="cur-r" id="cursorR"></div>
+    <canvas id="webgl_canvas"></canvas>
+
+    <!-- Component Injection Points -->
+    <div id="navbar-container"></div>
+
+    <button id="theme_toggle">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="12" cy="12" r="4" />
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+      </svg>
+    </button>
+
+    <div id="scroll_container">
+      <section id="s0" class="side-layout">
+        <div class="text-card">
+          <div class="tag">Brand Spotlight — HUEGLAM</div>
+          <h2>EMPOWERING<br />UNIQUE<br />BEAUTY</h2>
+          <p class="body-text">
+            At HUEGLAM, our mission is to empower individuals to embrace their unique beauty through innovative, high-quality skincare and cosmetics. We strive to make self-expression effortless and accessible, blending cutting-edge formulations with vibrant aesthetics for every shade, style, and story.
+          </p>
+          <a class="cta" href="https://hueglam.com/" target="_blank" rel="noopener noreferrer">
+            Explore HUEGLAM
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M1 6h10M6 1l5 5-5 5" />
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <section id="s1">
+        <div class="text-card right">
+          <div class="h-line"></div>
+          <div class="tag">Brand Spotlight — Wellness (Soon)</div>
+          <h2>HOLISTIC<br />WELLNESS</h2>
+          <p class="body-text">
+            Our upcoming Wellness collection focuses on the intersection of inner
+            balance and outer radiance. Crafted with adaptogens and restorative
+            botanicals for a total mind-body rejuvenation.
+          </p>
+          <div class="stat-row" style="justify-content: flex-end;">
+          </div>
+        </div>
+      </section>
+
+      <section id="s2">
+        <div class="text-card">
+          <div class="h-line"></div>
+          <div class="tag">Brand Spotlight — Home (Soon)</div>
+          <h2>CURATED<br />HOME</h2>
+          <p class="body-text">
+            Transforming your living space into a sanctuary. Our Home line will
+            feature olfactory narratives and aesthetic essentials designed to
+            elevate your daily environment.
+          </p>
+          <a class="cta" href="#s3">
+            Notify Me
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M1 6h10M6 1l5 5-5 5" />
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <section id="s3">
+        <div class="text-card center">
+          <div class="h-line"></div>
+          <div class="tag">Brand Spotlight — Partner Brands</div>
+          <h2>PARTNER<br />BRANDS</h2>
+          <p class="body-text">
+            Collaborating with global innovators who share our commitment to
+            purity and purpose. Discover a curated selection of brands that
+            resonate with the Nyoraa philosophy.
+          </p>
+        </div>
+      </section>
+    </div>
+
+    <div class="stripe">
+      <div class="stripe-t">
+        <span>heritage&future</span><span class="dot">✦</span>
+        <span>authentic stories</span><span class="dot">✦</span>
+        <span>purpose-led design</span><span class="dot">✦</span>
+        <span>brand creation</span><span class="dot">✦</span>
+        <span>hueglam</span><span class="dot">✦</span>
+        <span>innovation</span><span class="dot">✦</span>
+        <span>consumer first</span><span class="dot">✦</span>
+        <span>heritage&future</span><span class="dot">✦</span>
+        <span>authentic stories</span><span class="dot">✦</span>
+        <span>purpose-led design</span><span class="dot">✦</span>
+        <span>brand creation</span><span class="dot">✦</span>
+        <span>hueglam</span><span class="dot">✦</span>
+        <span>innovation</span><span class="dot">✦</span>
+        <span>consumer first</span><span class="dot">✦</span>
+      </div>
+    </div>
+
+    <section id="brands" class="sec">
+      <div class="brands-intro reveal">
+        <div>
+          <div class="sh-eye">Market Spotlight</div>
+          <h2 class="sh-h">Trending<br /><em>Products</em></h2>
+        </div>
+        <p class="brands-intro-r sh-p" id="brand-desc">
+          Our Gentle Cleanser effectively removes impurities while maintaining the skin's natural moisture balance for a fresh, clean canvas.
+        </p>
+      </div>
+
+      <div class="options" id="options-container">
+        <!-- Generated by JS -->
+      </div>
+    </section>
+
+    <div style="background: #ffffff;">
+      <hr class="div" />
+    </div>
+
+    <section class="
+      w-full font-raleway bg-white
+      px-[5vw] py-10 xs:py-12 sm:py-14 md:py-16 lg:py-20 xl:py-24 2xl:py-28 3xl:py-36 4xl:py-44
+    ">
+      <div class="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between mb-7 sm:mb-9 lg:mb-11 2xl:mb-14 3xl:mb-18 4xl:mb-24">
+        <div class="shrink-0 reveal" style="transition-delay: 0.1s;">
+          <p class="flex items-center gap-2.5 uppercase tracking-[0.2em] font-medium text-linen-500 text-[10px] sm:text-[10.5px] 2xl:text-xs 3xl:text-sm 4xl:text-base mb-3 sm:mb-4 2xl:mb-5 3xl:mb-6">
+            <span class="h-px bg-linen-400 shrink-0 w-5 2xl:w-7 3xl:w-9 4xl:w-12"></span>
+            Our Promise
+          </p>
+          <h2 class="leading-[1.04] tracking-tight text-[24px] xs:text-[28px] sm:text-[32px] md:text-[36px] lg:text-[42px] xl:text-[48px] 2xl:text-[56px] 3xl:text-[68px] 4xl:text-[84px]">
+            <span class="block font-light text-linen-900">The Nyoraa</span>
+            <span class="block font-semibold text-linen-900">Standards</span>
+          </h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-2 sm:gap-3 lg:gap-4 py-8 sm:py-10 lg:py-12 mb-8 sm:mb-10 lg:mb-12 2xl:mb-16 3xl:mb-20 4xl:mb-28">
+        
+        <!-- Card 1 -->
+        <div class="md:col-span-7 reveal group relative flex flex-col overflow-hidden rounded-3xl bg-[#f7f7f7] hover:bg-white p-4 sm:p-5 lg:p-6 border border-gray-200 hover:border-gray-300 transition-all duration-700 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] hover:-translate-y-1" style="transition-delay: 0.4s;">
+          <div class="flex justify-between items-start mb-3 sm:mb-4 lg:mb-5">
+            <span class="font-mono text-xs sm:text-sm tracking-widest text-[#a89888] font-medium">01</span>
+            <div class="w-12 h-12 relative group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 rounded-full bg-white group-hover:bg-[#f2ede5] transition-colors duration-500 anim-heart-bg"></div>
+              <div class="relative z-10 w-full h-full flex items-center justify-center text-[#1a1a1a] anim-heart-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart w-6 h-6"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+              </div>
+              <div class="absolute inset-0 bg-black/5 rounded-full blur-md translate-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+          </div>
+          <div class="relative z-10">
+            <h3 class="text-lg sm:text-xl lg:text-2xl 2xl:text-3xl text-[#1a1a1a] mb-1 sm:mb-2 group-hover:text-[#1a1a1a] transition-colors duration-500 leading-tight" style="font-family: var(--fd);">Consumer<br />Obsession</h3>
+            <p class="text-[10px] sm:text-xs lg:text-sm 2xl:text-base text-[#666666] leading-relaxed group-hover:text-[#1a1a1a] transition-colors duration-500 max-w-md" style="font-family: var(--fb);">
+              Every decision starts and ends with the person who uses our products. We study lives, not just demographics. We listen to silences as much as surveys.
+            </p>
+          </div>
+          <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-gradient-to-tl from-[#e8c8b8]/30 to-transparent opacity-0 group-hover:opacity-100 rounded-full blur-3xl transition-opacity duration-700 pointer-events-none"></div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="md:col-span-5 reveal group relative flex flex-col overflow-hidden rounded-3xl bg-[#f7f7f7] hover:bg-white p-4 sm:p-5 lg:p-6 border border-gray-200 hover:border-gray-300 transition-all duration-700 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] hover:-translate-y-1" style="transition-delay: 0.5s;">
+          <div class="flex justify-between items-start mb-3 sm:mb-4 lg:mb-5">
+            <span class="font-mono text-xs sm:text-sm tracking-widest text-[#a89888] font-medium">02</span>
+            <div class="w-12 h-12 relative group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 rounded-full bg-white group-hover:bg-[#f2ede5] transition-colors duration-500 anim-pen-bg"></div>
+              <div class="relative z-10 w-full h-full flex items-center justify-center text-[#1a1a1a] anim-pen-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pen w-6 h-6"><path d="M21.174 6.812a1 1 0 0 0-3.986-3.987L3.842 16.174a2 2 0 0 0-.5.83l-1.321 4.352a.5.5 0 0 0 .623.622l4.353-1.32a2 2 0 0 0 .83-.497z"/><path d="m15 5 4 4"/></svg>
+              </div>
+              <div class="absolute inset-0 bg-black/5 rounded-full blur-md translate-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+          </div>
+          <div class="relative z-10">
+            <h3 class="text-lg sm:text-xl lg:text-2xl 2xl:text-3xl text-[#1a1a1a] mb-1 sm:mb-2 group-hover:text-[#1a1a1a] transition-colors duration-500 leading-tight" style="font-family: var(--fd);">Design as<br />Strategy</h3>
+            <p class="text-[10px] sm:text-xs lg:text-sm 2xl:text-base text-[#666666] leading-relaxed group-hover:text-[#1a1a1a] transition-colors duration-500 max-w-xs" style="font-family: var(--fb);">
+              Design is not decoration — it is the clearest expression of a brand's promise. Beautiful and purposeful are never mutually exclusive in our work.
+            </p>
+          </div>
+          <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-gradient-to-tl from-[#e8c8b8]/30 to-transparent opacity-0 group-hover:opacity-100 rounded-full blur-3xl transition-opacity duration-700 pointer-events-none"></div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="md:col-span-5 reveal group relative flex flex-col overflow-hidden rounded-3xl bg-[#f7f7f7] hover:bg-white p-4 sm:p-5 lg:p-6 border border-gray-200 hover:border-gray-300 transition-all duration-700 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] hover:-translate-y-1" style="transition-delay: 0.6s;">
+          <div class="flex justify-between items-start mb-3 sm:mb-4 lg:mb-5">
+            <span class="font-mono text-xs sm:text-sm tracking-widest text-[#a89888] font-medium">03</span>
+            <div class="w-12 h-12 relative group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 rounded-full bg-white group-hover:bg-[#f2ede5] transition-colors duration-500 anim-trend-bg"></div>
+              <div class="relative z-10 w-full h-full flex items-center justify-center text-[#1a1a1a] anim-trend-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trending-up w-6 h-6"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+              </div>
+              <div class="absolute inset-0 bg-black/5 rounded-full blur-md translate-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+          </div>
+          <div class="relative z-10">
+            <h3 class="text-lg sm:text-xl lg:text-2xl 2xl:text-3xl text-[#1a1a1a] mb-1 sm:mb-2 group-hover:text-[#1a1a1a] transition-colors duration-500 leading-tight" style="font-family: var(--fd);">Long-term<br />Thinking</h3>
+            <p class="text-[10px] sm:text-xs lg:text-sm 2xl:text-base text-[#666666] leading-relaxed group-hover:text-[#1a1a1a] transition-colors duration-500 max-w-xs" style="font-family: var(--fb);">
+              We build brands that outlast us. We resist shortcuts that compromise brand equity. Our portfolio is curated for generational relevance — we measure trust in decades.
+            </p>
+          </div>
+          <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-gradient-to-tl from-[#e8c8b8]/30 to-transparent opacity-0 group-hover:opacity-100 rounded-full blur-3xl transition-opacity duration-700 pointer-events-none"></div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="md:col-span-7 reveal group relative flex flex-col overflow-hidden rounded-3xl bg-[#f7f7f7] hover:bg-white p-4 sm:p-5 lg:p-6 border border-gray-200 hover:border-gray-300 transition-all duration-700 hover:shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)] hover:-translate-y-1" style="transition-delay: 0.7s;">
+          <div class="flex justify-between items-start mb-3 sm:mb-4 lg:mb-5">
+            <span class="font-mono text-xs sm:text-sm tracking-widest text-[#a89888] font-medium">04</span>
+            <div class="w-12 h-12 relative group-hover:scale-110 transition-transform duration-500">
+              <div class="absolute inset-0 rounded-full bg-white group-hover:bg-[#f2ede5] transition-colors duration-500 anim-book-bg"></div>
+              <div class="relative z-10 w-full h-full flex items-center justify-center text-[#1a1a1a] anim-book-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book-open w-6 h-6"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              </div>
+              <div class="absolute inset-0 bg-black/5 rounded-full blur-md translate-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            </div>
+          </div>
+          <div class="relative z-10">
+            <h3 class="text-lg sm:text-xl lg:text-2xl 2xl:text-3xl text-[#1a1a1a] mb-1 sm:mb-2 group-hover:text-[#1a1a1a] transition-colors duration-500 leading-tight" style="font-family: var(--fd);">Authentic<br />Stories</h3>
+            <p class="text-[10px] sm:text-xs lg:text-sm 2xl:text-base text-[#666666] leading-relaxed group-hover:text-[#1a1a1a] transition-colors duration-500 max-w-md" style="font-family: var(--fb);">
+              Every brand in our house is built on a foundation of truth. We celebrate heritage and craftsmanship, ensuring every product tells a story of integrity.
+            </p>
+          </div>
+          <div class="absolute -bottom-32 -right-32 w-96 h-96 bg-gradient-to-tl from-[#e8c8b8]/30 to-transparent opacity-0 group-hover:opacity-100 rounded-full blur-3xl transition-opacity duration-700 pointer-events-none"></div>
+        </div>
+
+      </div>
+
+      <div class="group cursor-pointer flex items-center divide-x divide-gray-200 border border-gray-200 rounded-2xl sm:rounded-[2rem] py-4 sm:py-6 md:py-8 lg:py-10 px-3 sm:px-4 md:px-6 lg:px-8 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_0_50px_rgba(200,190,180,0.3)] hover:bg-[#faf9f7] hover:border-gray-300 stats-strip">
+        <div class="reveal flex-1 pr-5 xs:pr-6 sm:pr-8 md:pr-10 lg:pr-12 xl:pr-14 2xl:pr-16 3xl:pr-20 4xl:pr-28" style="transition-delay: 0.8s;">
+          <p class="font-light text-linen-700 leading-none tracking-tight mb-1.5 2xl:mb-2 3xl:mb-3 text-[22px] xs:text-[24px] sm:text-[26px] md:text-[30px] lg:text-[34px] xl:text-[38px] 2xl:text-[48px] 3xl:text-[60px] 4xl:text-[72px] transition-transform duration-500 group-hover:scale-105 group-hover:text-linen-900" style="font-family: var(--fb) !important; font-weight: 400 !important;"><span class="font-normal stat-num" data-end="4">4</span>+</p>
+          <p class="font-medium uppercase tracking-[0.16em] text-linen-500 text-[9px] xs:text-[9.5px] sm:text-[10px] lg:text-[10.5px] 2xl:text-xs 3xl:text-sm 4xl:text-base text-grey">Child brands</p>
+        </div>
+        <div class="reveal flex-1 px-5 xs:px-6 sm:px-8 md:px-10 lg:px-12 xl:pr-14 2xl:px-16 3xl:px-20 4xl:px-28" style="transition-delay: 0.9s;">
+          <p class="font-light text-linen-700 leading-none tracking-tight mb-1.5 2xl:mb-2 3xl:mb-3 text-[22px] xs:text-[24px] sm:text-[26px] md:text-[30px] lg:text-[34px] xl:text-[38px] 2xl:text-[48px] 3xl:text-[60px] 4xl:text-[72px] transition-transform duration-500 group-hover:scale-105 group-hover:text-linen-900" style="font-family: var(--fb) !important; font-weight: 400 !important;"><span class="font-normal stat-num" data-end="6">6</span>+</p>
+          <p class="font-medium uppercase tracking-[0.16em] text-linen-500 text-[9px] xs:text-[9.5px] sm:text-[10px] lg:text-[10.5px] 2xl:text-xs 3xl:text-sm 4xl:text-base text-grey">Years of trust</p>
+        </div>
+        <div class="reveal flex-1 pl-5 xs:pl-6 sm:pl-8 md:pl-10 lg:pl-12 xl:pl-14 2xl:pl-16 3xl:px-20 4xl:pl-28" style="transition-delay: 1.0s;">
+          <p class="font-light text-linen-700 leading-none tracking-tight mb-1.5 2xl:mb-2 3xl:mb-3 text-[22px] xs:text-[24px] sm:text-[26px] md:text-[30px] lg:text-[34px] xl:text-[38px] 2xl:text-[48px] 3xl:text-[60px] 4xl:text-[72px] transition-transform duration-500 group-hover:scale-105 group-hover:text-linen-900" style="font-family: var(--fb) !important; font-weight: 400 !important;"><span class="font-normal stat-num" data-end="10">10</span>+</p>
+          <p class="font-medium uppercase tracking-[0.16em] text-linen-500 text-[9px] xs:text-[9.5px] sm:text-[10px] lg:text-[10.5px] 2xl:text-xs 3xl:text-sm 4xl:text-base text-grey">Products offered</p>
+        </div>
+      </div>
+    </section>
+    
+    <div class="w-full h-px bg-gray-200 reveal" style="transition-delay: 0.3s;"></div>
+
+    <div id="footer-container"></div>
+  </main>
+
+  <!-- Fetch components and init page logic -->
+  <script>
+    async function loadComponent(url, containerId) {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const html = await response.text();
+        const container = document.getElementById(containerId);
+        
+        const fragment = document.createRange().createContextualFragment(html);
+        container.replaceWith(fragment);
+      } catch (e) {
+        console.error('Error loading component ' + url, e);
+      }
+    }
+
+    // Brands logic
+    const brands = [
+      { name: "Gentle Cleanser", sub: "Hueglam Essentials", icon: "fas fa-water", bg: "/products/Faceswash.webp" },
+      { name: "Hydrating Moisturizer", sub: "Hueglam Essentials", icon: "fas fa-leaf", bg: "/products/Mositruizer.webp" },
+      { name: "Essential Combo", sub: "Hueglam Essentials", icon: "fas fa-box-open", bg: "/products/combo.webp" },
+      { name: "Radiance Serum", sub: "Hueglam Essentials", icon: "fas fa-sparkles", bg: "/products/face_serum_bottle.webp" },
+      { name: "Sun Shield", sub: "Hueglam Essentials", icon: "fas fa-sun", bg: "/products/sunscreen.webp" }
+    ];
+    const brandDescriptions = [
+      "Our Gentle Cleanser effectively removes impurities while maintaining the skin's natural moisture balance for a fresh, clean canvas.",
+      "The Hydrating Moisturizer provides deep, long-lasting hydration with a lightweight texture that leaves skin feeling soft and resilient.",
+      "The Essential Combo brings together our core skincare heroes for a complete ritual that simplifies your path to glowing skin.",
+      "Our Radiance Serum is a potent blend of actives designed to brighten your complexion and even out skin tone for a luminous finish.",
+      "The Sun Shield offers broad-spectrum protection against UV rays and environmental stressors with a breathable, non-greasy formula."
+    ];
+    let activeBrand = 0;
+
+    function renderBrands() {
+      const container = document.getElementById('options-container');
+      const desc = document.getElementById('brand-desc');
+      container.innerHTML = '';
+      
+      brands.forEach((brand, i) => {
+        const div = document.createElement('div');
+        div.className = `option ${activeBrand === i ? 'active' : ''}`;
+        div.style.setProperty('--optionBackground', `url(${brand.bg})`);
+        div.setAttribute('aria-label', `View details for ${brand.name}`);
+        
+        div.innerHTML = `
+          <div class="shadow"></div>
+          <div class="label">
+            <div class="icon"><i class="${brand.icon}"></i></div>
+            <div class="info">
+              <div class="main">${brand.name}</div>
+              <div class="sub">${brand.sub}</div>
+            </div>
+          </div>
+        `;
+        
+        div.onclick = () => {
+          activeBrand = i;
+          renderBrands();
+          desc.textContent = brandDescriptions[i];
+        };
+        
+        container.appendChild(div);
+      });
+    }
+
+    // Run on load
+    document.addEventListener("DOMContentLoaded", async () => {
+      // Load components first
+      await Promise.all([
+        loadComponent('/app/components/Navbar.html', 'navbar-container'),
+        loadComponent('/app/components/Footer.html', 'footer-container')
+      ]);
+
+      renderBrands();
+
+      // Setup GSAP
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Cursor
+      const c = document.getElementById('cursor');
+      const cr = document.getElementById('cursorR');
+      if (c && cr) {
+        const xSet = gsap.quickSetter(c, "x", "px");
+        const ySet = gsap.quickSetter(c, "y", "px");
+        const xrSet = gsap.quickSetter(cr, "x", "px");
+        const yrSet = gsap.quickSetter(cr, "y", "px");
+        let mx = 0, my = 0, rx = 0, ry = 0;
+        
+        document.addEventListener('mousemove', (e) => {
+          mx = e.clientX; my = e.clientY;
+          xSet(mx); ySet(my);
+        }, { passive: true });
+        
+        gsap.ticker.add(() => {
+          rx += (mx - rx) * 0.15;
+          ry += (my - ry) * 0.15;
+          xrSet(rx); yrSet(ry);
+        });
+      }
+
+      // Theme toggle
+      const themeToggle = document.getElementById('theme_toggle');
+      if(themeToggle) {
+        themeToggle.addEventListener('click', () => {
+          const doc = document.documentElement;
+          const nt = doc.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+          doc.setAttribute('data-theme', nt);
+        });
+      }
+
+      // WebGL Canvas
+      const canvas = document.getElementById('webgl_canvas');
+      if(canvas) {
+        const gl = canvas.getContext("webgl", {
+          alpha: false, antialias: false, depth: false, stencil: false,
+          preserveDrawingBuffer: false, powerPreference: "high-performance"
+        });
+        if(gl) {
+          const vs = `attribute vec2 a; void main() { gl_Position = vec4(a, 0.0, 1.0); }`;
+          const fs = `
+            precision mediump float;
+            uniform vec2  uR;
+            uniform float uT, uS, uSc, uBl;
+            #define PI 3.14159265359
+            float sat(float x) { return clamp(x, 0.0, 1.0); }
+            float smoother(float x) { x = sat(x); return x * x * x * (x * (x * 6.0 - 15.0) + 10.0); }
+            vec3 sCol(vec3 c0, vec3 c1, vec3 c2, vec3 c3, vec3 c4) {
+              int si = int(uSc); vec3 a = c0; vec3 b = c1;
+              if (si == 1) { a = c1; b = c2; } else if (si == 2) { a = c2; b = c3; } else if (si == 3) { a = c3; b = c4; }
+              return mix(a, b, uBl);
+            }
+            float sF(float c0, float c1, float c2, float c3, float c4) {
+              int si = int(uSc); float a = c0; float b = c1;
+              if (si == 1) { a = c1; b = c2; } else if (si == 2) { a = c2; b = c3; } else if (si == 3) { a = c3; b = c4; }
+              return mix(a, b, uBl);
+            }
+            mat2 rot(float a) { float c = cos(a); float s = sin(a); return mat2(c, -s, s, c); }
+            float hash(vec2 p) { return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123); }
+            float noise(vec2 p) {
+              vec2 i = floor(p); vec2 f = fract(p); f = f * f * (3.0 - 2.0 * f);
+              float a = hash(i); float b = hash(i + vec2(1.0, 0.0)); float c = hash(i + vec2(0.0, 1.0)); float d = hash(i + vec2(1.0, 1.0));
+              return mix(mix(a, b, f.x), mix(c, d, f.x), f.y);
+            }
+            float waveH(vec2 p, float t, float amp, float storm) {
+              float h = 0.0; vec2 s1 = normalize(vec2(1.0, 0.28)); vec2 s2 = normalize(vec2(-0.48, 0.88)); vec2 s3 = normalize(vec2(0.82, -0.16));
+              s2 = rot(storm * 0.18) * s2; s3 = rot(-storm * 0.14) * s3;
+              float d1 = dot(p, s1); float d2 = dot(p, s2); float d3 = dot(p, s3);
+              h += amp * 0.66 * sin(d1 * 0.42 + t * 0.38); h += amp * 0.22 * sin(d1 * 0.94 - t * 0.62); h += amp * 0.14 * sin(d2 * 1.18 - t * 0.82); h += amp * 0.09 * sin(d3 * 1.82 + t * 1.04);
+              h += amp * (0.11 + storm * 0.07) * sin(p.x * 1.45 - t * 0.76 + p.y * 0.66); h += amp * (0.07 + storm * 0.05) * sin(p.x * 2.85 + t * 1.06 - p.y * 0.52); h += amp * (0.04 + storm * 0.03) * sin(p.x * 4.60 - t * 1.50 + p.y * 1.02);
+              float m = noise(p * 14.0 + vec2(t * 0.18, t * 0.06)) - 0.5; h += m * amp * (0.010 + storm * 0.008); return h;
+            }
+            vec3 waveNorm(vec2 p, float t, float amp, float storm) {
+              float e = 0.018; float hL = waveH(p - vec2(e, 0.0), t, amp, storm); float hR = waveH(p + vec2(e, 0.0), t, amp, storm); float hD = waveH(p - vec2(0.0, e), t, amp, storm); float hU = waveH(p + vec2(0.0, e), t, amp, storm);
+              return normalize(vec3(-(hR - hL) / (2.0 * e), 1.0, -(hU - hD) / (2.0 * e)));
+            }
+            float starField(vec2 uv) { vec2 gv = floor(uv); vec2 lv = fract(uv) - 0.5; float h = hash(gv); float size = mix(0.012, 0.0025, h); float d = length(lv + vec2(hash(gv + 3.1) - 0.5, hash(gv + 7.3) - 0.5) * 0.25); float star = smoothstep(size, 0.0, d); star *= smoothstep(0.82, 1.0, h); return star; }
+            void main() {
+              vec2 uv = (gl_FragCoord.xy - uR * 0.5) / uR.y; float s = smoother(uS);
+              float camY = mix(1.14, 1.03, s) + sin(s * PI * 1.4) * 0.028; float camZ = mix(0.08, -0.18, s); float pitch = mix(0.115, 0.088, s);
+              vec3 ro = vec3(0.0, camY, camZ); vec3 rd = normalize(vec3(uv.x, uv.y - pitch, -1.4));
+              float storm = smoothstep(0.80, 1.0, s); float night = smoothstep(0.56, 0.84, s);
+              vec3 skyTop = sCol(vec3(0.18, 0.06, 0.24), vec3(0.05, 0.24, 0.68), vec3(0.26, 0.06, 0.04), vec3(0.01, 0.01, 0.05), vec3(0.04, 0.05, 0.09));
+              vec3 skyHori = sCol(vec3(0.92, 0.48, 0.18), vec3(0.42, 0.62, 0.90), vec3(0.88, 0.32, 0.04), vec3(0.03, 0.05, 0.14), vec3(0.15, 0.17, 0.23));
+              vec3 sunCol = sCol(vec3(1.0, 0.62, 0.22), vec3(1.0, 0.96, 0.80), vec3(1.0, 0.38, 0.05), vec3(0.70, 0.75, 0.94), vec3(0.26, 0.28, 0.34));
+              vec3 seaDeep = sCol(vec3(0.08, 0.05, 0.12), vec3(0.03, 0.14, 0.34), vec3(0.10, 0.06, 0.04), vec3(0.00, 0.01, 0.03), vec3(0.03, 0.04, 0.07));
+              vec3 seaShlo = sCol(vec3(0.28, 0.17, 0.24), vec3(0.09, 0.38, 0.60), vec3(0.24, 0.13, 0.06), vec3(0.04, 0.06, 0.16), vec3(0.07, 0.10, 0.14));
+              vec3 fogCol = sCol(vec3(0.80, 0.50, 0.30), vec3(0.58, 0.72, 0.90), vec3(0.70, 0.28, 0.05), vec3(0.02, 0.03, 0.08), vec3(0.12, 0.14, 0.18));
+              float sunAngle = clamp(s / 0.58, 0.0, 1.0) * PI; vec3 sunDir = normalize(vec3(cos(sunAngle) * -0.75, sin(sunAngle) * 0.38 - 0.08, -1.0)); vec3 moonDir = normalize(vec3(-0.14, 0.42, -1.0));
+              float waveAmp = sF(0.082, 0.070, 0.100, 0.054, 0.30) + storm * 0.020; float fogDen = sF(0.020, 0.010, 0.022, 0.034, 0.046); float moonAmt = sF(0.0, 0.0, 0.05, 0.92, 0.06);
+              float sunGlow = smoothstep(-0.10, 0.06, sunDir.y); vec3 col;
+              if (rd.y < 0.0) {
+                float tFlat = ro.y / (-rd.y); float ss = tFlat / 22.0; float t = ss;
+                for (int i = 0; i < 22; i++) { if (ro.y + rd.y * t < waveH(ro.xz + rd.xz * t, uT, waveAmp, storm)) break; t += ss; }
+                float ta = t - ss; float tb = t; for (int i = 0; i < 5; i++) { float tm = (ta + tb) * 0.5; if (ro.y + rd.y * tm < waveH(ro.xz + rd.xz * tm, uT, waveAmp, storm)) tb = tm; else ta = tm; }
+                t = (ta + tb) * 0.5; vec2 wp = ro.xz + rd.xz * t; vec3 n = waveNorm(wp, uT, waveAmp, storm); vec3 v = -rd;
+                float fres = pow(1.0 - clamp(dot(n, v), 0.0, 1.0), 4.0); vec3 r = reflect(rd, n);
+                vec3 rSky = mix(skyHori, skyTop, pow(clamp(r.y, 0.0, 1.0), 0.42)); rSky = mix(rSky, skyHori, 0.12);
+                float rs = max(dot(r, sunDir), 0.0); rSky += sunCol * (pow(rs, 120.0) * 2.0 + pow(rs, 18.0) * 0.07) * sunGlow;
+                if (moonAmt > 0.04) rSky += vec3(0.72, 0.80, 0.95) * pow(max(dot(r, moonDir), 0.0), 120.0) * 0.78 * moonAmt;
+                vec3 wC = mix(seaDeep, seaShlo, exp(-t * 0.40) * 0.5) * mix(vec3(1.0), vec3(0.85, 0.92, 1.0), clamp(t * 0.25, 0.0, 1.0));
+                col = mix(wC, rSky, 0.15 + fres * 0.34);
+                col += sunCol * (pow(max(dot(reflect(-sunDir, n), v), 0.0), 200.0) * step(0.0, sunDir.y) * 0.3 + pow(max(dot(reflect(-sunDir, n), v), 0.0), 32.0) * 0.04 * sunGlow);
+                col += sunCol * pow(max(dot(reflect(rd, n), sunDir), 0.0), 8.0) * 0.15 * smoothstep(0.0, 0.35, -rd.y) * sunGlow;
+                col += sunCol * smoothstep(0.94, 1.0, noise(wp * 18.0 + vec2(uT * 0.55, uT * 0.22))) * 0.02 * sunGlow * step(0.0, sunDir.y);
+                if (moonAmt > 0.04) col += vec3(0.72, 0.80, 0.95) * pow(max(dot(reflect(-moonDir, n), v), 0.0), 520.0) * 0.09 * moonAmt;
+                float hC = waveH(wp, uT, waveAmp, storm); float foam = clamp((waveH(wp-vec2(0.025,0),uT,waveAmp,storm)+waveH(wp+vec2(0.025,0),uT,waveAmp,storm)+waveH(wp-vec2(0,0.025),uT,waveAmp,storm)+waveH(wp+vec2(0,0.025),uT,waveAmp,storm)-4.0*hC)*(24.0+storm*10.0),0.0,1.0);
+                col += foam * vec3(1.0) * (0.03 + storm * 0.10); col = mix(col, fogCol, 1.0 - exp(-t * fogDen * 1.65));
+              } else {
+                float h = clamp(rd.y, 0.0, 1.0); vec3 sCol = mix(skyHori, skyTop, pow(h, 0.38));
+                float cl = smoothstep(0.62, 0.86, noise(rd.x*5.5+vec2(rd.y*3.0,uT*0.015))*0.65+noise(rd.x*8.0-vec2(rd.y*4.0,uT*0.010))*0.35)*smoothstep(-0.02,0.24,rd.y)*(0.08+storm*0.18);
+                sCol = mix(sCol, mix(sCol*0.97, mix(vec3(1.0,0.82,0.65), vec3(0.42,0.48,0.56), storm), 0.35), cl);
+                float sd = max(dot(rd, sunDir), 0.0); sCol += sunCol * (pow(sd,380.0)*1.5+pow(sd,22.0)*0.04+pow(sd,5.0)*0.02+smoothstep(0.99925,0.99995,sd)*0.8)*sunGlow;
+                sCol += sunCol * (exp(-abs(rd.y)*24.0)*0.03 + pow(sd,3.0)*0.01) * sunGlow;
+                if (moonAmt > 0.04) { float md = max(dot(rd, moonDir), 0.0); sCol += vec3(0.88, 0.92, 1.0) * (pow(md,820.0)*7.4 + pow(md,6.0)*0.045) * moonAmt; }
+                if (night > 0.02) sCol += vec3(0.80, 0.88, 1.0) * (starField(rd.xy/max(0.12,rd.z+1.6)*140.0)+starField(rd.xy/max(0.12,rd.z+1.6)*140.0*0.55+11.7)*0.65)*smoothstep(0.02,0.26,rd.y)*(1.0-storm*0.85)*night*0.82;
+                sCol += fogCol * exp(-abs(rd.y)*mix(38.0,22.0,storm)) * (0.09 + storm * 0.10); col = mix(sCol, sCol * vec3(0.91, 0.94, 0.98), storm * 0.22);
+              }
+              col = mix(col, col, smoothstep(-0.008, 0.008, rd.y)); col = mix(fogCol, col, smoothstep(-0.008, 0.018, rd.y)*0.25+0.75);
+              gl_FragColor = vec4(clamp(col + (hash(gl_FragCoord.xy*0.5+floor(uT*12.0))-0.5)*0.006, 0.0, 1.0), 1.0);
+            }
+          `;
+
+          const mkS = (t, s) => { const sh = gl.createShader(t); gl.shaderSource(sh, s); gl.compileShader(sh); return sh; };
+          const p = gl.createProgram(); gl.attachShader(p, mkS(gl.VERTEX_SHADER, vs)); gl.attachShader(p, mkS(gl.FRAGMENT_SHADER, fs)); gl.linkProgram(p); gl.useProgram(p);
+          const b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+          const a = gl.getAttribLocation(p, "a"); gl.enableVertexAttribArray(a); gl.vertexAttribPointer(a, 2, gl.FLOAT, false, 0, 0);
+          const uR = gl.getUniformLocation(p, "uR"), uT = gl.getUniformLocation(p, "uT"), uS = gl.getUniformLocation(p, "uS"), uSc = gl.getUniformLocation(p, "uSc"), uBl = gl.getUniformLocation(p, "uBl");
+
+          let tgt = 0, smooth = 0;
+          let isVisible = true;
+
+          const canvasObserver = new IntersectionObserver(([entry]) => {
+            isVisible = entry.isIntersecting;
+          }, { threshold: 0.01 });
+          canvasObserver.observe(canvas);
+
+          const update = () => {
+            const cinematicRange = 4000;
+            tgt = Math.min(1, window.scrollY / cinematicRange);
+          };
+          const resize = () => {
+            const dpr = Math.min(window.devicePixelRatio, 1.5);
+            const w = window.innerWidth * dpr, h = window.innerHeight * dpr;
+            canvas.width = w; canvas.height = h;
+            gl.viewport(0, 0, w, h);
+            gl.uniform2f(uR, w, h);
+            update();
+          };
+          window.addEventListener("resize", resize, { passive: true });
+          window.addEventListener("scroll", update, { passive: true });
+          resize();
+
+          gsap.ticker.add((now) => {
+            if (!isVisible) return;
+            smooth += (tgt - smooth) * 0.1;
+            const N = 4;
+            const raw = smooth * (N - 1);
+            const si = Math.min(Math.floor(raw), N - 2);
+            const bl = raw - si;
+
+            gl.uniform1f(uT, now / 1000); gl.uniform1f(uS, smooth); gl.uniform1f(uSc, si); gl.uniform1f(uBl, bl);
+            gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+          });
+        }
+      }
+
+      // Scramble logic
+      const scramble = (el, duration = 800) => {
+        const final = el.getAttribute('data-scramble') || el.innerText;
+        const chars = final.replace(/\s/g, '');
+        const original = el.innerHTML;
+        let its = 0;
+
+        const step = () => {
+          if (!document.getElementById('container')) return;
+
+          el.innerText = final.split("").map((c, i) => {
+            if (i < its) return final[i];
+            if (c === ' ' || c === '\n') return c;
+            return chars[Math.floor(Math.random() * chars.length)];
+          }).join("");
+
+          if (its >= final.length) {
+            el.innerHTML = original;
+            return;
+          }
+
+          its += final.length / (duration / 30);
+          setTimeout(step, 30);
+        };
+        step();
+      };
+
+      const revealObserver = new IntersectionObserver(es => es.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in', 'visible');
+          if (e.target.hasAttribute('data-scramble')) {
+            scramble(e.target);
+          }
+        }
+      }), { threshold: 0.1 });
+      document.querySelectorAll('.reveal, .tag, h1, h2, .body-text, .stat-row, .cta, .h-line').forEach(e => revealObserver.observe(e));
+
+      // Drag scroll
+      // Actually there's no element with ref "prodRailRef", wait it's not present in the markup?
+      // Ah, the original code had `prodRailRef` but it wasn't attached.
+
+      // Count Up Logic
+      const animateCountUp = (el, end, duration) => {
+        const start = Math.floor(end / 2);
+        let count = start;
+        let observer;
+
+        observer = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting) {
+            let startTimestamp = null;
+            const durationMs = duration * 1000;
+
+            const step = (timestamp) => {
+              if (!startTimestamp) startTimestamp = timestamp;
+              const progress = Math.min((timestamp - startTimestamp) / durationMs, 1);
+              const easeOut = 1 - Math.pow(1 - progress, 2);
+              count = Math.floor(easeOut * (end - start) + start);
+              el.innerText = count;
+
+              if (progress < 1) {
+                window.requestAnimationFrame(step);
+              } else {
+                el.innerText = end;
+              }
+            };
+            window.requestAnimationFrame(step);
+            observer.disconnect();
+          }
+        }, { threshold: 0.5 });
+        observer.observe(el);
+      };
+
+      document.querySelectorAll('.stat-num').forEach(el => {
+        animateCountUp(el, parseInt(el.getAttribute('data-end')), 1.2);
+      });
+    });
+  </script>
+</body>
+</html>

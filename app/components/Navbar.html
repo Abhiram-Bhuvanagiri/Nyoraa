@@ -1,0 +1,89 @@
+<nav class="nav-container" id="navbar">
+  <a href="/page.html" class="nav-logo">
+    <img
+      src="/logo.png"
+      alt="Nyoraa"
+      width="180"
+      height="60"
+      style="object-fit: contain; height: auto;"
+    />
+  </a>
+  <ul class="nav-links" id="nav-links">
+    <li>
+      <a href="/page.html">Home</a>
+    </li>
+    <li>
+      <a href="/about-us/page.html">About Us</a>
+    </li>
+    <li>
+      <a href="/contacts-us/page.html">Contact Us</a>
+    </li>
+  </ul>
+  <button
+    class="hamburger"
+    id="hamburger"
+    aria-label="Toggle menu"
+  >
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<script>
+  (function initNavbar() {
+    const navbar = document.getElementById('navbar');
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+    const links = navLinks.querySelectorAll('a');
+
+    let isMenuOpen = false;
+    let navHidden = false;
+    let lastScrollY = window.scrollY;
+
+    function toggleMenu(forceClose = false) {
+      if (forceClose) {
+        isMenuOpen = false;
+      } else {
+        isMenuOpen = !isMenuOpen;
+      }
+      
+      if (isMenuOpen) {
+        hamburger.classList.add('active');
+        navLinks.classList.add('active');
+      } else {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      }
+    }
+
+    hamburger.addEventListener('click', () => toggleMenu());
+
+    links.forEach(link => {
+      link.addEventListener('click', () => toggleMenu(true));
+    });
+
+    window.addEventListener('scroll', () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY <= 10) {
+        // At top of page — always show
+        navHidden = false;
+      } else if (currentScrollY > lastScrollY) {
+        // Scrolling down — hide
+        navHidden = true;
+      } else {
+        // Scrolling up — show
+        navHidden = false;
+      }
+
+      lastScrollY = currentScrollY;
+
+      if (navHidden) {
+        navbar.classList.add('nav-hidden');
+      } else {
+        navbar.classList.remove('nav-hidden');
+      }
+    }, { passive: true });
+  })();
+</script>

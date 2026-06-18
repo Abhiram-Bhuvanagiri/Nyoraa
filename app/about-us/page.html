@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>About Us | NYORAA — House of Brands</title>
+  <link rel="stylesheet" href="/app/globals.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            raleway: ['Raleway', 'sans-serif'],
+          },
+          colors: {
+            linen: {
+              50:  '#fdfcfa',
+              100: '#f8f6f2',
+              200: '#f3f0eb',
+              300: '#e8e4de',
+              400: '#d5cfc6',
+              500: '#c0bab1',
+              600: '#9a958e',
+              700: '#6a6560',
+              800: '#3a3630',
+              900: '#1a1814',
+            },
+          },
+          screens: {
+            'xs': '375px',
+            '3xl': '1920px',
+            '4xl': '2560px',
+          },
+        },
+      },
+    }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</head>
+<body>
+  <div class="about-us-page-wrapper" id="container">
+    <div id="navbar-container"></div>
+
+    <!-- ══ SECTION 1 · HERO ══ -->
+    <section id="about-hero" class="aquatic-section">
+      <main>
+        <div class="aquatic-content">
+          <span class="r">HOUSE OF BEAUTY & WELLNESS</span>
+          <h1 class="r d1">The Future of Beauty </h1>
+          <hr class="r d2" />
+          <p class="r d3">Nyoraa is a parent company shaping the future of beauty through a curated portfolio of distinctive brands. From clinical skincare to luxury formulations and modern grooming, each brand is engineered with purpose, precision, and identity.</p>
+        </div>
+        <div class="swiper aquatic-swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide swiper-slide--one" style="background-image: url(/brands/hueglam.png); background-size: cover;">
+              <div>
+                <h3>HUEGLAM</h3>
+                <p>Empowering individuals to embrace their unique beauty through innovative skincare and vibrant aesthetics.</p>
+                <a href="https://hueglam.com/" target="_blank">explore</a>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide--two" style="background-image: url(/brands/wellness.png); background-size: cover;">
+              <div>
+                <h3>WELLNESS</h3>
+                <p>Holistic rituals designed to restore balance and rejuvenate the mind, body, and spirit.</p>
+                <a href="#">explore</a>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide--three" style="background-image: url(/brands/home.png); background-size: cover;">
+              <div>
+                <h3>HOME</h3>
+                <p>Elevating your sanctuary with curated essentials that transform daily spaces into restorative retreats.</p>
+                <a href="#">explore</a>
+              </div>
+            </div>
+            <div class="swiper-slide swiper-slide--four" style="background-image: url(/brands/partners.png); background-size: cover;">
+              <div>
+                <h3>PARTNERS</h3>
+                <p>Strategic collaborations with global innovators to redefine the standards of conscious luxury.</p>
+                <a href="#">explore</a>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </main>
+    </section>
+
+    <hr class="div" />
+
+    <!-- ══ SECTION 2 · VISION & MISSION ══ -->
+    <section class="sec-lg sec-alt" id="vision">
+      <div class="vision-bg-circle"></div>
+      <div class="vision-bg-circle"></div>
+      <div class="vision-bg-circle"></div>
+      <div class="vision-bg-circle"></div>
+      <div class="vision-inner">
+        <div class="sh-eye r" style="justify-content: center;">Vision &amp; Mission</div>
+        <div class="vision-word-reveal r d1">
+          <span class="vwr-line"><span class="vwr-word">Making</span> <span class="vwr-word d1">Honest</span></span>
+          <span class="vwr-line"><span class="vwr-word d2">Beauty</span> <span class="vwr-word d3">Universal</span></span>
+        </div>
+        <p class="sh-p r d3" style="max-width: 600px; margin: 0 auto 4rem; text-align: center;">Nyoraa aims to become one of India’s most trusted consumer brand houses by building meaningful, long-term relationships with customers. Their mission is to create high-quality brands that earn genuine loyalty through trust, storytelling, community, and consistent value — not just marketing.</p>
+        <div class="page-content r d2">
+          <div class="card">
+            <div class="content">
+              <h3 class="title">Scientific Rigour</h3>
+              <p class="copy">We replace marketing conjecture with clinical evidence. Every ingredient is selected for its molecular efficacy.</p>
+              <button class="btn">Our Methodology</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="content">
+              <h3 class="title">Full Disclosure</h3>
+              <p class="copy">Transparency is our baseline. We share our concentrations and sources so you never have to guess what's in your bottle.</p>
+              <button class="btn">View Standards</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="content">
+              <h3 class="title">Universal Reach</h3>
+              <p class="copy">High-performance beauty shouldn't be a luxury. We bring clinical-grade formulations to a global audience.</p>
+              <button class="btn">Our Impact</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="content">
+              <h3 class="title">Conscious Growth</h3>
+              <p class="copy">We build for the next century, prioritizing renewable sourcing and circular packaging across all our brands.</p>
+              <button class="btn">Sustainability</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="div" />
+
+    <!-- ══ SECTION 3 · LEADERSHIP ══ -->
+    <section class="leadership-wrap" id="leadership">
+      <div class="leadership-header" id="headerRef">
+        <div class="ls-eyebrow">LEADERSHIP</div>
+        <div class="ls-headline-serif" id="serifRef">The People Behind</div>
+        <div class="ls-headline-italic" id="italicRef">The Vision</div>
+        <p class="ls-subtext">
+          Our founding team and senior leadership combine scientific expertise, brand-building
+          acumen, and a relentless commitment to honest beauty.
+        </p>
+      </div>
+
+      <div class="founder-stage">
+        <div class="founder-card">
+          <div class="photo-frame" style="display: flex; align-items: center; justify-content: center; background: #1a1a1a;">
+            <svg viewBox="0 0 24 24" width="80" height="80" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <div class="photo-overlay"></div>
+            <div class="shimmer-bar"></div>
+            <div class="corner-accent corner-tl"></div>
+            <div class="corner-accent corner-tr"></div>
+            <div class="corner-accent corner-bl"></div>
+            <div class="corner-accent corner-br"></div>
+            <div class="particles"></div>
+          </div>
+          <div class="founder-info">
+            <div class="info-fill"></div>
+            <div class="founder-info-inner">
+              <div class="founder-name">M Dinesh KUMAR</div>
+              <div class="founder-title">Founder &amp; Creative Director</div>
+              <div class="divider-line"></div>
+              <p class="founder-bio">
+                User Experience Design (UED), UX Research, Brand Design, Brand Marketing, Brand Consulting, Digital Marketing, Web Design, SEO, SEM, Graphic Design.
+              </p>
+              <div class="founder-links">
+                <a class="link-dot" href="https://www.linkedin.com/in/dineshmux" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" /><rect x="2" y="9" width="4" height="12" /><circle cx="4" cy="4" r="2" fill="#888" stroke="none" /></svg></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr class="div" />
+
+    <!-- ══ SECTION 4 · CTA ══ -->
+    <section id="cta3">
+      <canvas id="c3"></canvas>
+      <div class="cta3-content">
+        <h2 id="h3">Let's Build the Future of <br />Honest Beauty</h2>
+        <p id="p3">Partner with Nyoraa to redefine transparency in skincare.</p>
+        <a href="/contacts-us/page.html">
+          <button class="btn3" id="b3">Get In Touch</button>
+        </a>
+      </div>
+    </section>
+
+    <div id="footer-container"></div>
+  </div>
+
+  <script>
+    async function loadComponent(url, containerId) {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const html = await response.text();
+        const container = document.getElementById(containerId);
+        const fragment = document.createRange().createContextualFragment(html);
+        container.replaceWith(fragment);
+      } catch (e) {
+        console.error('Error loading component ' + url, e);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await Promise.all([
+        loadComponent('/app/components/Navbar.html', 'navbar-container'),
+        loadComponent('/app/components/Footer.html', 'footer-container')
+      ]);
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Swiper Init
+      new Swiper('.aquatic-swiper', {
+        effect: 'coverflow',
+        grabCursor: true,
+        centeredSlides: true,
+        coverflowEffect: {
+          rotate: 0,
+          stretch: 0,
+          depth: 100,
+          modifier: 3,
+          slideShadows: true
+        },
+        keyboard: { enabled: true },
+        mousewheel: { thresholdDelta: 70 },
+        loop: true,
+        pagination: { el: '.swiper-pagination', clickable: true },
+        breakpoints: {
+          640: { slidesPerView: 2 },
+          768: { slidesPerView: 1 },
+          1024: { slidesPerView: 2 },
+          1560: { slidesPerView: 3 }
+        }
+      });
+
+      // Reveal Animations
+      const revEls = document.querySelectorAll('.r, .r-left, .r-right, .r-scale');
+      const revObs = new IntersectionObserver(entries => entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('in');
+      }), { threshold: .1 });
+      revEls.forEach(e => revObs.observe(e));
+
+      // Word Reveal
+      const wordObs = new IntersectionObserver(entries => entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.vwr-word').forEach((w, i) => {
+            setTimeout(() => w.classList.add('in'), i * 120);
+          });
+        }
+      }), { threshold: .3 });
+      document.querySelectorAll('.vision-word-reveal').forEach(el => wordObs.observe(el));
+
+      // GSAP Scroll Animations
+      gsap.from('.team-card', {
+        scrollTrigger: { trigger: '#leadership .team-grid', start: 'top 82%' },
+        y: 44, opacity: 0, duration: .75, stagger: .12, ease: 'power3.out', scale: .97
+      });
+      gsap.from('.card', {
+        scrollTrigger: { trigger: '#vision .page-content', start: 'top 82%' },
+        y: 36, opacity: 0, duration: .7, stagger: .12, ease: 'power2.out'
+      });
+      gsap.from('#about-cta .cta-tagline', {
+        scrollTrigger: { trigger: '#about-cta', start: 'top 70%' },
+        y: 40, opacity: 0, duration: 1, ease: 'power3.out'
+      });
+
+      // Canvas Lines
+      const canvas = document.getElementById('c3');
+      if (canvas && canvas.parentElement) {
+        const el = canvas.parentElement;
+        const W = el.offsetWidth, H = el.offsetHeight;
+        canvas.width = W; canvas.height = H;
+        const canvasCtx = canvas.getContext('2d');
+        if (canvasCtx) {
+          const lines = Array.from({ length: 18 }, (_, i) => ({
+            y: (i / 17) * H,
+            amp: 8 + Math.random() * 20,
+            freq: 0.005 + Math.random() * 0.01,
+            phase: Math.random() * Math.PI * 2,
+            speed: 0.008 + Math.random() * 0.01
+          }));
+          let t = 0;
+          let isCanvasVisible = true;
+          const ctaObs = new IntersectionObserver(([entry]) => {
+            isCanvasVisible = entry.isIntersecting;
+          }, { threshold: 0.01 });
+          ctaObs.observe(canvas);
+
+          gsap.ticker.add(() => {
+            if (!isCanvasVisible) return;
+            t += 1;
+            canvasCtx.clearRect(0, 0, W, H);
+            lines.forEach((l, i) => {
+              canvasCtx.beginPath();
+              canvasCtx.moveTo(0, l.y);
+              for (let x = 0; x <= W; x += 2) {
+                const y = l.y + Math.sin(x * l.freq + t * l.speed + l.phase) * l.amp;
+                canvasCtx.lineTo(x, y);
+              }
+              canvasCtx.strokeStyle = `rgba(184, 146, 74, ${0.05 + i * 0.008})`;
+              canvasCtx.lineWidth = 1;
+              canvasCtx.stroke();
+            });
+          });
+        }
+        
+        gsap.to('#h3', {
+          scrollTrigger: { trigger: '#cta3', start: 'top 75%' },
+          opacity: 1, y: 0, duration: 1.2, ease: 'power3.out'
+        });
+        gsap.to('#p3', {
+          scrollTrigger: { trigger: '#cta3', start: 'top 75%' },
+          opacity: 1, duration: 1, delay: 0.6
+        });
+        gsap.to('#b3', {
+          scrollTrigger: { trigger: '#cta3', start: 'top 75%' },
+          opacity: 1, duration: 1, delay: 1.0
+        });
+      }
+
+      // Header Wrap Logic
+      const serifRef = document.getElementById('serifRef');
+      if (serifRef) {
+        const text = serifRef.textContent || "";
+        serifRef.textContent = "";
+        text.split(" ").forEach((word, i) => {
+          const mask = document.createElement("span");
+          mask.className = "word-mask";
+          const inner = document.createElement("span");
+          inner.className = "word-inner";
+          inner.textContent = word;
+          mask.appendChild(inner);
+          serifRef.appendChild(mask);
+          if (i < text.split(" ").length - 1) serifRef.appendChild(document.createTextNode(" "));
+        });
+      }
+
+      const italicRef = document.getElementById('italicRef');
+      if (italicRef) {
+        const text = italicRef.textContent || "";
+        italicRef.textContent = "";
+        [...text].forEach((ch, i) => {
+          if (ch === " ") {
+            italicRef.appendChild(document.createTextNode(" "));
+            return;
+          }
+          const span = document.createElement("span");
+          span.className = "char";
+          span.style.animationDelay = `${0.62 + i * 0.055}s`;
+          span.textContent = ch;
+          italicRef.appendChild(span);
+        });
+      }
+
+      const headerObs = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) entry.target.classList.add('in');
+      }, { threshold: 0.2 });
+      const headerRef = document.getElementById('headerRef');
+      if (headerRef) headerObs.observe(headerRef);
+
+      // Particles
+      const cards = document.querySelectorAll('.founder-card');
+      cards.forEach(card => {
+        const particlesContainer = card.querySelector('.particles');
+        if (particlesContainer) {
+          for (let i = 0; i < 8; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'p-dot';
+            const size = 2 + Math.random() * 3;
+            dot.style.cssText = `
+              left: ${10 + Math.random() * 80}%;
+              bottom: ${Math.random() * 20}%;
+              --dur: ${3 + Math.random() * 3}s;
+              --delay: ${Math.random() * 3}s;
+              width: ${size}px;
+              height: ${size}px;
+            `;
+            particlesContainer.appendChild(dot);
+          }
+        }
+      });
+
+      const cardObs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) e.target.classList.add('in');
+        });
+      }, { threshold: 0.1 });
+      cards.forEach(c => cardObs.observe(c));
+
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 100);
+    });
+  </script>
+</body>
+</html>

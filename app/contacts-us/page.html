@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Contact Us | NYORAA</title>
+  <link rel="stylesheet" href="/app/globals.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <style>
+    .form-control {
+      color: #000 !important;
+    }
+    .form-control::placeholder {
+      color: #888;
+    }
+    .is-invalid {
+      border-color: #dc3545 !important;
+    }
+    
+    /* Simple Toast CSS */
+    #toast-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+    }
+    .toast {
+      background: #333;
+      color: #fff;
+      padding: 12px 20px;
+      margin-top: 10px;
+      border-radius: 4px;
+      font-family: 'Raleway', sans-serif;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .toast.show {
+      opacity: 1;
+    }
+    .toast.error {
+      background: #dc3545;
+    }
+    .toast.success {
+      background: #28a745;
+    }
+  </style>
+</head>
+<body>
+  <div class="contact-us-page-wrapper">
+    <div id="navbar-container"></div>
+    <div id="toast-container"></div>
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <div class="heading text-center">
+          <h2>Get In <span>Touch</span></h2>
+          <p>Connecting brands with purpose. Reach out to us for collaborations,<br />corporate inquiries, or to learn more about our house of brands.</p>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            <div class="title">
+              <h3>Contact Details</h3>
+              <p>Our team is dedicated to providing swift and comprehensive assistance to all our partners and customers.</p>
+            </div>
+            <div class="content">
+              <div class="info">
+                <i class="fas fa-mobile-alt"></i>
+                <h4 class="d-inline-block">PHONE :<br />
+                  <span>8886669630</span></h4>
+              </div>
+              <div class="info">
+                <i class="far fa-envelope"></i>
+                <h4 class="d-inline-block">EMAIL :<br />
+                  <span>info@nyoraa.com</span></h4>
+              </div>
+              <div class="info">
+                <i class="fas fa-map-marker-alt"></i>
+                <h4 class="d-inline-block">ADDRESS :<br />
+                  <span>Nyoraa Consumers Pvt Ltd.<br />Hyderabad, Telangana, India</span></h4>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-7">
+            <form id="contactForm">
+              <div class="row">
+                <script src="https://cdn.tailwindcss.com"></script>
+                <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            raleway: ['Raleway', 'sans-serif'],
+          },
+          colors: {
+            linen: {
+              50:  '#fdfcfa',
+              100: '#f8f6f2',
+              200: '#f3f0eb',
+              300: '#e8e4de',
+              400: '#d5cfc6',
+              500: '#c0bab1',
+              600: '#9a958e',
+              700: '#6a6560',
+              800: '#3a3630',
+              900: '#1a1814',
+            },
+          },
+          screens: {
+            'xs': '375px',
+            '3xl': '1920px',
+            '4xl': '2560px',
+          },
+        },
+      },
+    }
+  </script>
+                <div class="col-sm-6">
+                  <input 
+                    type="text" 
+                    name="name"
+                    id="inputName"
+                    class="form-control" 
+                    placeholder="Name" 
+                  />
+                </div>
+                <div class="col-sm-6">
+                  <input 
+                    type="email" 
+                    name="email"
+                    id="inputEmail"
+                    class="form-control" 
+                    placeholder="Email" 
+                  />
+                </div>
+                <div class="col-sm-12">
+                  <input 
+                    type="text" 
+                    name="subject"
+                    id="inputSubject"
+                    class="form-control" 
+                    placeholder="Subject" 
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <textarea 
+                  name="message"
+                  id="inputMessage"
+                  class="form-control" 
+                  rows="5" 
+                  placeholder="Message"
+                ></textarea>
+              </div>
+              <button class="btn btn-block" type="submit">Send Now!</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div id="footer-container"></div>
+  </div>
+
+  <script>
+    async function loadComponent(url, containerId) {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const html = await response.text();
+        const container = document.getElementById(containerId);
+        const fragment = document.createRange().createContextualFragment(html);
+        container.replaceWith(fragment);
+      } catch (e) {
+        console.error('Error loading component ' + url, e);
+      }
+    }
+
+    function showToast(message, type = 'error') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = `toast show ${type}`;
+      toast.textContent = message;
+      container.appendChild(toast);
+      
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await Promise.all([
+        loadComponent('/app/components/Navbar.html', 'navbar-container'),
+        loadComponent('/app/components/Footer.html', 'footer-container')
+      ]);
+
+      const form = document.getElementById('contactForm');
+      const emailInput = document.getElementById('inputEmail');
+      const msgInput = document.getElementById('inputMessage');
+      const nameInput = document.getElementById('inputName');
+      const subjectInput = document.getElementById('inputSubject');
+
+      const clearErrors = () => {
+        emailInput.classList.remove('is-invalid');
+        msgInput.classList.remove('is-invalid');
+      };
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        clearErrors();
+
+        const email = emailInput.value;
+        const msg = msgInput.value;
+        let hasError = false;
+
+        if (!email) {
+          emailInput.classList.add('is-invalid');
+          showToast('Email is required', 'error');
+          hasError = true;
+        } else if (!/\S+@\S+\.\S+/.test(email)) {
+          emailInput.classList.add('is-invalid');
+          showToast('Invalid email format', 'error');
+          hasError = true;
+        }
+
+        if (!msg) {
+          msgInput.classList.add('is-invalid');
+          if(!hasError) showToast('Message is required', 'error');
+          hasError = true;
+        }
+
+        if (!hasError) {
+          showToast('Message sent successfully!', 'success');
+          form.reset();
+        }
+      });
+      
+      emailInput.addEventListener('input', clearErrors);
+      msgInput.addEventListener('input', clearErrors);
+    });
+  </script>
+</body>
+</html>

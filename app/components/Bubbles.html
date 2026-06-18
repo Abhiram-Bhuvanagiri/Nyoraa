@@ -1,0 +1,30 @@
+<div class="bubbles" aria-hidden="true" id="bubbles-container"></div>
+
+<script>
+  (function initBubbles() {
+    const container = document.getElementById('bubbles-container');
+    const count = 60;
+    let fragment = document.createDocumentFragment();
+
+    for (let i = 0; i < count; i++) {
+      const bubble = document.createElement('div');
+      bubble.className = 'bubble';
+      
+      const size = 2 + Math.random() * 4 + 'rem';
+      const distance = 6 + Math.random() * 4 + 'rem';
+      const position = -5 + Math.random() * 110 + '%';
+      const time = 2 + Math.random() * 2 + 's';
+      const delay = -1 * (2 + Math.random() * 2) + 's';
+
+      bubble.style.setProperty('--size', size);
+      bubble.style.setProperty('--distance', distance);
+      bubble.style.setProperty('--position', position);
+      bubble.style.setProperty('--time', time);
+      bubble.style.setProperty('--delay', delay);
+
+      fragment.appendChild(bubble);
+    }
+    
+    container.appendChild(fragment);
+  })();
+</script>
