@@ -36,12 +36,15 @@ const server = http.createServer((req, res) => {
     filePath = '/contacts-us.html';
   }
 
+  // Strip leading slash for correct path.join behavior on Windows
+  const relativeFilePath = filePath.replace(/^\/+/, '');
+  
   // Attempt to resolve file from root first, then fallback to /public
-  let absolutePath = path.join(__dirname, filePath);
+  let absolutePath = path.join(__dirname, relativeFilePath);
 
   if (!fs.existsSync(absolutePath)) {
     // If not found, check the public folder (for images, fonts, etc.)
-    absolutePath = path.join(__dirname, 'public', filePath);
+    absolutePath = path.join(__dirname, 'public', relativeFilePath);
   }
 
   // Auto-append .html if looking for a component (e.g. /app/components/Navbar.html)
