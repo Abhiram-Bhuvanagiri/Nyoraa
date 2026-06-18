@@ -12,6 +12,13 @@
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
+  
+  
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -42,11 +49,7 @@
       },
     }
   </script>
-  <script src="https://cdn.tailwindcss.com"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 <body>
   <div class="about-us-page-wrapper" id="container">
@@ -256,7 +259,7 @@
       });
 
       // Reveal Animations
-      const revEls = document.querySelectorAll('.r, .r-left, .r-right, .r-scale');
+      const revEls = document.querySelectorAll('.r');
       const revObs = new IntersectionObserver(entries => entries.forEach(e => {
         if (e.isIntersecting) e.target.classList.add('in');
       }), { threshold: .1 });
@@ -273,17 +276,9 @@
       document.querySelectorAll('.vision-word-reveal').forEach(el => wordObs.observe(el));
 
       // GSAP Scroll Animations
-      gsap.from('.team-card', {
-        scrollTrigger: { trigger: '#leadership .team-grid', start: 'top 82%' },
-        y: 44, opacity: 0, duration: .75, stagger: .12, ease: 'power3.out', scale: .97
-      });
       gsap.from('.card', {
         scrollTrigger: { trigger: '#vision .page-content', start: 'top 82%' },
         y: 36, opacity: 0, duration: .7, stagger: .12, ease: 'power2.out'
-      });
-      gsap.from('#about-cta .cta-tagline', {
-        scrollTrigger: { trigger: '#about-cta', start: 'top 70%' },
-        y: 40, opacity: 0, duration: 1, ease: 'power3.out'
       });
 
       // Canvas Lines
