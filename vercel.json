@@ -1,10 +1,9 @@
 {
+  "cleanUrls": true,
   "rewrites": [
-    { "source": "/", "destination": "/app/page.html" },
-    { "source": "/index.html", "destination": "/app/page.html" },
-    { "source": "/page.html", "destination": "/app/page.html" },
-    { "source": "/about-us", "destination": "/app/about-us/page.html" },
-    { "source": "/contacts-us", "destination": "/app/contacts-us/page.html" },
-    { "source": "/coming-soon", "destination": "/app/coming-soon/page.html" }
+    {
+      "source": "/",
+      "destination": "/app/page.html"
+    }
   ]
 }
