@@ -6,7 +6,7 @@
   <title>NYORAA — House of Brands</title>
   <meta name="description" content="Six iconic brands. One vision. Crafting transformative personal care rooted in pure ingredients and breakthrough science." />
   
-  <link rel="stylesheet" href="/app/globals.css" />
+  <link rel="stylesheet" href="/globals.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
@@ -418,8 +418,8 @@
     document.addEventListener("DOMContentLoaded", async () => {
       // Load components first
       await Promise.all([
-        loadComponent('/app/components/Navbar.html', 'navbar-container'),
-        loadComponent('/app/components/Footer.html', 'footer-container')
+        loadComponent('/components/Navbar.html', 'navbar-container'),
+        loadComponent('/components/Footer.html', 'footer-container')
       ]);
 
       renderBrands();

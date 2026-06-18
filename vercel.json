@@ -3,19 +3,19 @@
   "rewrites": [
     {
       "source": "/",
-      "destination": "/app/page.html"
+      "destination": "/index.html"
     },
     {
       "source": "/about-us",
-      "destination": "/app/about-us/page.html"
+      "destination": "/about-us.html"
     },
     {
       "source": "/contacts-us",
-      "destination": "/app/contacts-us/page.html"
+      "destination": "/contacts-us.html"
     },
     {
       "source": "/coming-soon",
-      "destination": "/app/coming-soon/page.html"
+      "destination": "/coming-soon.html"
     }
   ]
 }

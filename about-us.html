@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>About Us | NYORAA — House of Brands</title>
-  <link rel="stylesheet" href="/app/globals.css" />
+  <link rel="stylesheet" href="/globals.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
@@ -203,7 +203,7 @@
       <div class="cta3-content">
         <h2 id="h3">Let's Build the Future of <br />Honest Beauty</h2>
         <p id="p3">Partner with Nyoraa to redefine transparency in skincare.</p>
-        <a href="/contacts-us/page.html">
+        <a href="/contacts-us">
           <button class="btn3" id="b3">Get In Touch</button>
         </a>
       </div>
@@ -228,8 +228,8 @@
 
     document.addEventListener('DOMContentLoaded', async () => {
       await Promise.all([
-        loadComponent('/app/components/Navbar.html', 'navbar-container'),
-        loadComponent('/app/components/Footer.html', 'footer-container')
+        loadComponent('/components/Navbar.html', 'navbar-container'),
+        loadComponent('/components/Footer.html', 'footer-container')
       ]);
 
       gsap.registerPlugin(ScrollTrigger);

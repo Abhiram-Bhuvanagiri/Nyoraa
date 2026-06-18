@@ -27,13 +27,13 @@ const server = http.createServer((req, res) => {
 
   // Custom Routing to map Next.js paths to our generated HTML files
   if (filePath === '/' || filePath === '/index.html' || filePath === '/page.html') {
-    filePath = '/app/page.html';
+    filePath = '/index.html';
   } else if (filePath === '/about-us' || filePath === '/about-us/page.html') {
-    filePath = '/app/about-us/page.html';
+    filePath = '/about-us.html';
   } else if (filePath === '/coming-soon' || filePath === '/coming-soon/page.html') {
-    filePath = '/app/coming-soon/page.html';
+    filePath = '/coming-soon.html';
   } else if (filePath === '/contacts-us' || filePath === '/contacts-us/page.html') {
-    filePath = '/app/contacts-us/page.html';
+    filePath = '/contacts-us.html';
   }
 
   // Attempt to resolve file from root first, then fallback to /public
