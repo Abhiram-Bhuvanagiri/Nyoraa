@@ -66,28 +66,28 @@
         </div>
         <div class="swiper aquatic-swiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide swiper-slide--one" style="background-image: url(/brands/hueglam.png); background-size: cover;">
+            <div class="swiper-slide swiper-slide--one" style="background-image: url(/assets/brands/hueglam.png); background-size: cover;">
               <div>
                 <h3>HUEGLAM</h3>
                 <p>Empowering individuals to embrace their unique beauty through innovative skincare and vibrant aesthetics.</p>
                 <a href="https://hueglam.com/" target="_blank">explore</a>
               </div>
             </div>
-            <div class="swiper-slide swiper-slide--two" style="background-image: url(/brands/wellness.png); background-size: cover;">
+            <div class="swiper-slide swiper-slide--two" style="background-image: url(/assets/brands/wellness.png); background-size: cover;">
               <div>
                 <h3>WELLNESS</h3>
                 <p>Holistic rituals designed to restore balance and rejuvenate the mind, body, and spirit.</p>
                 <a href="#">explore</a>
               </div>
             </div>
-            <div class="swiper-slide swiper-slide--three" style="background-image: url(/brands/home.png); background-size: cover;">
+            <div class="swiper-slide swiper-slide--three" style="background-image: url(/assets/brands/home.png); background-size: cover;">
               <div>
                 <h3>HOME</h3>
                 <p>Elevating your sanctuary with curated essentials that transform daily spaces into restorative retreats.</p>
                 <a href="#">explore</a>
               </div>
             </div>
-            <div class="swiper-slide swiper-slide--four" style="background-image: url(/brands/partners.png); background-size: cover;">
+            <div class="swiper-slide swiper-slide--four" style="background-image: url(/assets/brands/partners.png); background-size: cover;">
               <div>
                 <h3>PARTNERS</h3>
                 <p>Strategic collaborations with global innovators to redefine the standards of conscious luxury.</p>
@@ -226,7 +226,7 @@
       }
     }
 
-    document.addEventListener('DOMContentLoaded', async () => {
+    window.addEventListener('load', async () => {
       await Promise.all([
         loadComponent('/components/Navbar.html', 'navbar-container'),
         loadComponent('/components/Footer.html', 'footer-container')

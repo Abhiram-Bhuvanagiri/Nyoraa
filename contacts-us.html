@@ -197,7 +197,7 @@
       }, 3000);
     }
 
-    document.addEventListener('DOMContentLoaded', async () => {
+    window.addEventListener('load', async () => {
       await Promise.all([
         loadComponent('/components/Navbar.html', 'navbar-container'),
         loadComponent('/components/Footer.html', 'footer-container')

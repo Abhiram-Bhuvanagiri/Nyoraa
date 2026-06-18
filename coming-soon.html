@@ -91,7 +91,7 @@
       <div class="coming-soon-svg-wrap" style="margin-top: 80px;">
         <object
           type="image/svg+xml"
-          data="/coming-soon.svg"
+          data="/assets/coming-soon.svg"
           aria-label="Coming Soon Animation"
           class="coming-soon-svg"
         >
@@ -118,7 +118,7 @@
       }
     }
 
-    document.addEventListener('DOMContentLoaded', async () => {
+    window.addEventListener('load', async () => {
       await loadComponent('/components/Navbar.html', 'navbar-container');
     });
   </script>

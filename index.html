@@ -367,11 +367,11 @@
 
     // Brands logic
     const brands = [
-      { name: "Gentle Cleanser", sub: "Hueglam Essentials", icon: "fas fa-water", bg: "/products/Faceswash.webp" },
-      { name: "Hydrating Moisturizer", sub: "Hueglam Essentials", icon: "fas fa-leaf", bg: "/products/Mositruizer.webp" },
-      { name: "Essential Combo", sub: "Hueglam Essentials", icon: "fas fa-box-open", bg: "/products/combo.webp" },
-      { name: "Radiance Serum", sub: "Hueglam Essentials", icon: "fas fa-sparkles", bg: "/products/face_serum_bottle.webp" },
-      { name: "Sun Shield", sub: "Hueglam Essentials", icon: "fas fa-sun", bg: "/products/sunscreen.webp" }
+      { name: "Gentle Cleanser", sub: "Hueglam Essentials", icon: "fas fa-water", bg: "/assets/products/Faceswash.webp" },
+      { name: "Hydrating Moisturizer", sub: "Hueglam Essentials", icon: "fas fa-leaf", bg: "/assets/products/Mositruizer.webp" },
+      { name: "Essential Combo", sub: "Hueglam Essentials", icon: "fas fa-box-open", bg: "/assets/products/combo.webp" },
+      { name: "Radiance Serum", sub: "Hueglam Essentials", icon: "fas fa-sparkles", bg: "/assets/products/face_serum_bottle.webp" },
+      { name: "Sun Shield", sub: "Hueglam Essentials", icon: "fas fa-sun", bg: "/assets/products/sunscreen.webp" }
     ];
     const brandDescriptions = [
       "Our Gentle Cleanser effectively removes impurities while maintaining the skin's natural moisture balance for a fresh, clean canvas.",
@@ -415,7 +415,7 @@
     }
 
     // Run on load
-    document.addEventListener("DOMContentLoaded", async () => {
+    window.addEventListener('load', async () => {
       // Load components first
       await Promise.all([
         loadComponent('/components/Navbar.html', 'navbar-container'),
