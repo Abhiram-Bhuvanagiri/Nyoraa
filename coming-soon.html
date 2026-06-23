@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Coming Soon | NYORAA</title>
-  <link rel="stylesheet" href="/globals.css" />
+  <link rel="stylesheet" href="./globals.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
@@ -91,7 +91,7 @@
       <div class="coming-soon-svg-wrap" style="margin-top: 80px;">
         <object
           type="image/svg+xml"
-          data="/assets/coming-soon.svg"
+          data="./assets/coming-soon.svg"
           aria-label="Coming Soon Animation"
           class="coming-soon-svg"
         >
@@ -99,7 +99,7 @@
         </object>
       </div>
       <div class="coming-soon-text">
-        <a href="/" class="coming-soon-btn">BACK TO HOME</a>
+        <a href="./index.html" class="coming-soon-btn">BACK TO HOME</a>
       </div>
     </div>
   </div>
@@ -119,7 +119,7 @@
     }
 
     window.addEventListener('load', async () => {
-      await loadComponent('/components/Navbar.html', 'navbar-container');
+      await loadComponent('./components/Navbar.html', 'navbar-container');
     });
   </script>
 </body>

@@ -1,21 +1,5 @@
 {
-  "cleanUrls": true,
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/index.html"
-    },
-    {
-      "source": "/about-us",
-      "destination": "/about-us.html"
-    },
-    {
-      "source": "/contacts-us",
-      "destination": "/contacts-us.html"
-    },
-    {
-      "source": "/coming-soon",
-      "destination": "/coming-soon.html"
-    }
-  ]
+  "github": {
+    "silent": true
+  }
 }

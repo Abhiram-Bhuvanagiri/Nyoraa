@@ -6,7 +6,7 @@
   <title>NYORAA — House of Brands</title>
   <meta name="description" content="Six iconic brands. One vision. Crafting transformative personal care rooted in pure ingredients and breakthrough science." />
   
-  <link rel="stylesheet" href="/globals.css" />
+  <link rel="stylesheet" href="./globals.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
@@ -364,11 +364,11 @@
 
     // Brands logic
     const brands = [
-      { name: "Gentle Cleanser", sub: "Hueglam Essentials", icon: "fas fa-water", bg: "/assets/products/Faceswash.webp" },
-      { name: "Hydrating Moisturizer", sub: "Hueglam Essentials", icon: "fas fa-leaf", bg: "/assets/products/Mositruizer.webp" },
-      { name: "Essential Combo", sub: "Hueglam Essentials", icon: "fas fa-box-open", bg: "/assets/products/combo.webp" },
-      { name: "Radiance Serum", sub: "Hueglam Essentials", icon: "fas fa-sparkles", bg: "/assets/products/face_serum_bottle.webp" },
-      { name: "Sun Shield", sub: "Hueglam Essentials", icon: "fas fa-sun", bg: "/assets/products/sunscreen.webp" }
+      { name: "Gentle Cleanser", sub: "Hueglam Essentials", icon: "fas fa-water", bg: "./assets/products/Faceswash.webp" },
+      { name: "Hydrating Moisturizer", sub: "Hueglam Essentials", icon: "fas fa-leaf", bg: "./assets/products/Mositruizer.webp" },
+      { name: "Essential Combo", sub: "Hueglam Essentials", icon: "fas fa-box-open", bg: "./assets/products/combo.webp" },
+      { name: "Radiance Serum", sub: "Hueglam Essentials", icon: "fas fa-sparkles", bg: "./assets/products/face_serum_bottle.webp" },
+      { name: "Sun Shield", sub: "Hueglam Essentials", icon: "fas fa-sun", bg: "./assets/products/sunscreen.webp" }
     ];
     const brandDescriptions = [
       "Our Gentle Cleanser effectively removes impurities while maintaining the skin's natural moisture balance for a fresh, clean canvas.",
@@ -415,8 +415,8 @@
     window.addEventListener('load', async () => {
       // Load components first
       await Promise.all([
-        loadComponent('/components/Navbar.html', 'navbar-container'),
-        loadComponent('/components/Footer.html', 'footer-container')
+        loadComponent('./components/Navbar.html', 'navbar-container'),
+        loadComponent('./components/Footer.html', 'footer-container')
       ]);
 
       renderBrands();
@@ -667,6 +667,7 @@
       document.querySelectorAll('.stat-num').forEach(el => {
         animateCountUp(el, parseInt(el.getAttribute('data-end')), 1.2);
       });
+
     });
   </script>
 </body>

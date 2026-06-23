@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Nyoraa — House of Brands (Static Website)
 
-## Getting Started
+This is the production-ready static website for Nyoraa. It has been built to be highly performant, accessible, and easily deployable across any static hosting provider.
 
-First, run the development server:
+## Technology Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **HTML5**: Semantic and accessible document structure.
+- **Vanilla CSS**: Custom styling, responsive breakpoints, and animations defined in `globals.css`.
+- **Vanilla JavaScript**: Handles component loading, scroll animations, and interactive elements.
+- **GSAP (GreenSock)**: Used for smooth, high-performance scroll animations and timelines.
+- **Tailwind CSS (CDN)**: Used for rapid utility-class styling on specific sections.
+
+## Folder Structure
+
+```
+Nyoraa/
+├── assets/             # Images, SVGs, and other media files
+├── components/         # Reusable HTML components (Navbar, Footer)
+├── globals.css         # Global styles, variables, and custom component CSS
+├── index.html          # Homepage
+├── about-us.html       # About Us page
+├── coming-soon.html    # Coming Soon page
+├── contacts-us.html    # Contact Us page
+├── server.js           # Simple local development server
+├── vercel.json         # Deployment configuration for Vercel
+└── README.md           # This documentation
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Local Development & Testing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To test the website locally, you can use the provided Node.js server. This server is specifically designed to handle component fetching (`Navbar.html`, `Footer.html`) and local routing.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Prerequisites
+- [Node.js](https://nodejs.org/) installed on your machine.
 
-## Learn More
+### Setup Instructions
 
-To learn more about Next.js, take a look at the following resources:
+1. Open your terminal and navigate to the project directory.
+2. Run the local development server:
+   ```bash
+   node server.js
+   ```
+   *Alternatively, if you use `npm`, you can run `npm run serve-html`.*
+3. Open your browser and navigate to `http://localhost:3000`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Production Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is fully optimized for deployment on Vercel, Netlify, GitHub Pages, or any standard web server (Apache/Nginx).
 
-## Deploy on Vercel
+### Deploying to Vercel
+The project includes a `vercel.json` file which automatically configures the correct URL rewrites (e.g., mapping `/about-us` to `/about-us.html`).
+1. Connect your GitHub repository to Vercel or use the Vercel CLI.
+2. Select the "Other" framework preset.
+3. Deploy! Vercel will automatically detect the static files and serve them.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Maintenance Notes
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Component Loading**: The `Navbar` and `Footer` are injected dynamically using JavaScript (`fetch`). If you open the `.html` files directly in a browser (e.g., `file:///...`), CORS policies will block these components from loading. You **must** use a local server (`node server.js` or VS Code Live Server) to view the site locally.
+- **CSS Modularity**: If you need to override Tailwind classes or add complex animations, refer to the custom CSS rules located at the bottom of `globals.css` (e.g., `.standards-section`).
+
+## License
+All rights reserved. Property of Nyoraa.

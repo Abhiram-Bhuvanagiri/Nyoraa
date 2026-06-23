@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>About Us | NYORAA — House of Brands</title>
-  <link rel="stylesheet" href="/globals.css" />
+  <link rel="stylesheet" href="./globals.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
@@ -66,28 +66,28 @@
         </div>
         <div class="swiper aquatic-swiper">
           <div class="swiper-wrapper">
-            <div class="swiper-slide swiper-slide--one" style="background-image: url(/assets/brands/hueglam.png); background-size: cover;">
+            <div class="swiper-slide swiper-slide--one" style="background-image: url(./assets/brands/hueglam.png); background-size: cover;">
               <div>
                 <h3>HUEGLAM</h3>
                 <p>Empowering individuals to embrace their unique beauty through innovative skincare and vibrant aesthetics.</p>
                 <a href="https://hueglam.com/" target="_blank">explore</a>
               </div>
             </div>
-            <div class="swiper-slide swiper-slide--two" style="background-image: url(/assets/brands/wellness.png); background-size: cover;">
+            <div class="swiper-slide swiper-slide--two" style="background-image: url(./assets/brands/wellness.png); background-size: cover;">
               <div>
                 <h3>WELLNESS</h3>
                 <p>Holistic rituals designed to restore balance and rejuvenate the mind, body, and spirit.</p>
                 <a href="#">explore</a>
               </div>
             </div>
-            <div class="swiper-slide swiper-slide--three" style="background-image: url(/assets/brands/home.png); background-size: cover;">
+            <div class="swiper-slide swiper-slide--three" style="background-image: url(./assets/brands/home.png); background-size: cover;">
               <div>
                 <h3>HOME</h3>
                 <p>Elevating your sanctuary with curated essentials that transform daily spaces into restorative retreats.</p>
                 <a href="#">explore</a>
               </div>
             </div>
-            <div class="swiper-slide swiper-slide--four" style="background-image: url(/assets/brands/partners.png); background-size: cover;">
+            <div class="swiper-slide swiper-slide--four" style="background-image: url(./assets/brands/partners.png); background-size: cover;">
               <div>
                 <h3>PARTNERS</h3>
                 <p>Strategic collaborations with global innovators to redefine the standards of conscious luxury.</p>
@@ -203,7 +203,7 @@
       <div class="cta3-content">
         <h2 id="h3">Let's Build the Future of <br />Honest Beauty</h2>
         <p id="p3">Partner with Nyoraa to redefine transparency in skincare.</p>
-        <a href="/contacts-us">
+        <a href="./contacts-us.html">
           <button class="btn3" id="b3">Get In Touch</button>
         </a>
       </div>
@@ -228,8 +228,8 @@
 
     window.addEventListener('load', async () => {
       await Promise.all([
-        loadComponent('/components/Navbar.html', 'navbar-container'),
-        loadComponent('/components/Footer.html', 'footer-container')
+        loadComponent('./components/Navbar.html', 'navbar-container'),
+        loadComponent('./components/Footer.html', 'footer-container')
       ]);
 
       gsap.registerPlugin(ScrollTrigger);
